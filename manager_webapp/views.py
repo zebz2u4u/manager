@@ -19,7 +19,7 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, "You're registered!")
-            return redirect('login')
+            return redirect("login")
     else:
         form = CreateUserForm()
     
