@@ -1,5 +1,4 @@
-manager/__pycache__/
-manager/settings/__pycache__/
-manager_webapp/__pycache__/
-manager_webapp/migrations/__pycache__/
+__pycache__/
 db.sqlite3
+manager_webapp/migrations/__pycache__/
+*.pyc
