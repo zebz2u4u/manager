@@ -76,14 +76,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'manager.wsgi.application'
 
 # Database configuration
-DATABASES = {
-    'default': dj_database_url.parse(
-        os.getenv(
-            "DATABASE_URL",
-            "postgresql://cruddb_p3g8_user:ylwQ1hIckJu0UWRWu6TMrYHGyQa9khIq@dpg-cteu3056l47c73b489i0-a.frankfurt-postgres.render.com/cruddb_p3g8"
-        )
-    )
-}
+database_url = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -123,34 +117,3 @@ STATICFILES_STORAGE = (
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Logging configuration
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'DEBUG' if DEBUG else 'INFO',
-    },
-    'django': {
-        'handlers': ['console'],
-        'level': 'DEBUG' if DEBUG else 'INFO',
-        'propagate': False,
-    },
-}
