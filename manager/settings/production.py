@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     'manager_webapp',
     'crispy_forms',
+    'csp',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -47,6 +48,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -54,6 +56,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_SCRIPT_SRC = ["'self'", "https://apis.please-work-5oei.onrender.com"]
+CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
+CSP_IMG_SRC = ["'self'"]
+CSP_FONT_SRC = ["'self'"]
 
 ROOT_URLCONF = 'manager.urls'
 
@@ -128,7 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_SSL_REDIRECT = True
-SECURE_HSTS_SECONDS = 86400
+SECURE_HSTS_SECONDS = 15768001
 SECURE_HSTS_PRELOAD = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SESSION_COOKIE_SECURE = True
