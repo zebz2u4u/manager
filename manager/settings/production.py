@@ -55,11 +55,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 CSP_DEFAULT_SRC = ["'self'"]
-CSP_SCRIPT_SRC = ["'self'", "https://apis.please-work-5oei.onrender.com"]
-CSP_STYLE_SRC = ["'self'", "'unsafe-inline'"]
+CSP_STYLE_SRC = [
+    "'self'",
+    "https://please-work-5oei.onrender.com",
+    "https://bootswatch.com/5/minty/bootstrap.min.css",
+    "'unsafe-inline'"
+]
+CSP_SCRIPT_SRC = [
+    "'self'",
+    "https://please-work-5oei.onrender.com",
+]
+
 CSP_IMG_SRC = ["'self'"]
 CSP_FONT_SRC = ["'self'"]
 
