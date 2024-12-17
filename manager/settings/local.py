@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'manager_webapp',
     'crispy_forms',
     'csp',
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
