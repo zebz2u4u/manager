@@ -40,12 +40,15 @@ INSTALLED_APPS = [
 
     'manager_webapp',
     'crispy_forms',
+    'csp',
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -53,6 +56,21 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_STYLE_SRC = [
+    "'self'",
+    "https://please-work-5oei.onrender.com",
+    "https://bootswatch.com/5/minty/bootstrap.min.css",
+    "'unsafe-inline'"
+]
+CSP_SCRIPT_SRC = [
+    "'self'",
+    "https://please-work-5oei.onrender.com",
+]
+
+CSP_IMG_SRC = ["'self'"]
+CSP_FONT_SRC = ["'self'"]
 
 ROOT_URLCONF = 'manager.urls'
 

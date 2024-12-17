@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     'manager_webapp',
     'crispy_forms',
+    'csp',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -47,13 +48,30 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
+
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_STYLE_SRC = [
+    "'self'",
+    "https://please-work-5oei.onrender.com",
+    "https://bootswatch.com/5/minty/bootstrap.min.css",
+    "'unsafe-inline'"
+]
+CSP_SCRIPT_SRC = [
+    "'self'",
+    "https://please-work-5oei.onrender.com",
+]
+
+CSP_IMG_SRC = ["'self'"]
+CSP_FONT_SRC = ["'self'"]
 
 ROOT_URLCONF = 'manager.urls'
 
@@ -124,3 +142,12 @@ STATICFILES_STORAGE = (
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 15768001
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
