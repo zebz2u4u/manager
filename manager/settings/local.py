@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'manager_webapp',
     'crispy_forms',
     'csp',
-
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -103,6 +102,7 @@ DATABASES = {
     }
 }
 
+DATABASES["default"] = dj_database_url.parse("postgresql://cruddb_p3g8_user:ylwQ1hIckJu0UWRWu6TMrYHGyQa9khIq@dpg-cteu3056l47c73b489i0-a.frankfurt-postgres.render.com/cruddb_p3g8")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
